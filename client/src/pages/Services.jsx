@@ -53,126 +53,124 @@ const Services = () => {
 
   if (loading) {
     return (
-      <>
-        <Helmet>
-          <title>Services - PR Agency</title>
-          <meta name="description" content="Explore our comprehensive PR services designed to elevate your brand." />
-        </Helmet>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-        </div>
-        <Footer />
-      </>
+        <>
+          <Helmet>
+            <title>Services - PR Agency</title>
+            <meta name="description" content="Explore our comprehensive PR services designed to elevate your brand." />
+          </Helmet>
+          <Header />
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+          </div>
+          <Footer />
+        </>
     )
   }
 
   if (error) {
     return (
-      <>
-        <Helmet>
-          <title>Services - PR Agency</title>
-        </Helmet>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Oops!</h2>
-            <p className="text-gray-600">{error}</p>
-            <button 
-              onClick={fetchServices}
-              className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Try Again
-            </button>
+        <>
+          <Helmet>
+            <title>Services - PR Agency</title>
+          </Helmet>
+          <Header />
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Oops!</h2>
+              <p className="text-gray-600">{error}</p>
+              <button
+                  onClick={fetchServices}
+                  className="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+              >
+                Try Again
+              </button>
+            </div>
           </div>
-        </div>
-        <Footer />
-      </>
+          <Footer />
+        </>
     )
   }
 
   return (
-    <>
-      <Helmet>
-        <title>Services - PR Agency</title>
-        <meta name="description" content="Explore our comprehensive PR services designed to elevate your brand." />
-        <meta property="og:title" content="Services - PR Agency" />
-        <meta property="og:description" content="Explore our comprehensive PR services designed to elevate your brand." />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <>
+        <Helmet>
+          <title>Services - PR Agency</title>
+          <meta name="description" content="Explore our comprehensive PR services designed to elevate your brand." />
+          <meta property="og:title" content="Services - PR Agency" />
+          <meta property="og:description" content="Explore our comprehensive PR services designed to elevate your brand." />
+          <meta property="og:type" content="website" />
+        </Helmet>
 
-      <Header />
-      
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
-          <div className="container mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
-            >
-              <h1 className="text-5xl font-bold mb-6">Our Services</h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Comprehensive PR solutions tailored to elevate your brand and connect you with your audience
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        <Header />
 
-        {/* Services Grid */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {services.map((service) => (
-                <motion.div
-                  key={service._id}
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  className="group"
-                >
-                  <Link to={`/services/${service.slug}`}>
-                    <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 h-full">
-                      <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+        <main className="pt-20">
+          <section className="bg-gradient-to-br from-primary-900 to-primary-800 text-white py-20">
+            <div className="container mx-auto px-6">
+              <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="text-center"
+              >
+                <h1 className="text-5xl font-bold mb-6">Our Services</h1>
+                <p className="text-xl text-neutral-100 max-w-3xl mx-auto">
+                  Comprehensive PR solutions tailored to elevate your brand and connect you with your audience
+                </p>
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="py-20 bg-white">
+            <div className="container mx-auto px-6">
+              <motion.div
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {services.map((service) => (
+                    <motion.div
+                        key={service._id}
+                        variants={itemVariants}
+                        whileHover={{ y: -5 }}
+                        className="group"
+                    >
+                      <Link to={`/services/${service.slug}`}>
+                        <div className="bg-white rounded-xl shadow-lg p-8 border border-neutral-200 hover:shadow-xl transition-all duration-300 h-full">
+                          <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary-600 transition-colors">
                         <span className="text-2xl group-hover:text-white transition-colors">
                           {service.icon}
                         </span>
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600 mb-6 line-clamp-3">
-                        {service.description}
-                      </p>
-                      <div className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700">
-                        Learn More
-                        <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
+                          </div>
+                          <h3 className="text-2xl font-bold text-primary-900 mb-4 group-hover:text-accent-600 transition-colors">
+                            {service.title}
+                          </h3>
+                          <p className="text-neutral-600 mb-6 line-clamp-3">
+                            {service.description}
+                          </p>
+                          <div className="flex items-center text-primary-600 font-semibold group-hover:text-accent-600">
+                            Learn More
+                            <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                ))}
+              </motion.div>
 
-            {services.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No services available at the moment.</p>
-              </div>
-            )}
-          </div>
-        </section>
-      </main>
+              {services.length === 0 && (
+                  <div className="text-center py-12">
+                    <p className="text-neutral-500 text-lg">No services available at the moment.</p>
+                  </div>
+              )}
+            </div>
+          </section>
+        </main>
 
-      <Footer />
-    </>
+        <Footer />
+      </>
   )
 }
 
