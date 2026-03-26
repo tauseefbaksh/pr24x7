@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { BookOpen, Code, Briefcase, GraduationCap } from 'lucide-react'
+import { BookOpen, Code, Briefcase } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -11,7 +11,6 @@ const Journey = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Stagger timeline items
       gsap.from(timelineRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -24,7 +23,6 @@ const Journey = () => {
         ease: 'power3.out'
       })
 
-      // Animate timeline line
       const timelineLine = sectionRef.current?.querySelector('.timeline-line')
       if (timelineLine) {
         gsap.from(timelineLine, {
@@ -47,107 +45,79 @@ const Journey = () => {
       year: "Aug 2023 - Present",
       title: "Bachelor of Technology - CSE",
       institution: "Lovely Professional University",
-      location: "Phagwara, Punjab",
-      description: "Currently pursuing CSE degree with focus on full-stack development and advanced algorithms. CGPA: 7.27",
-      icon: GraduationCap,
-      type: "education"
-    },
-    {
-      year: "Sep 2025 - Nov 2025",
-      title: "Web Development Intern",
-      institution: "Vanillakart (Emvity Brushflicks)",
-      location: "Remote",
-      description: "Executed full-stack MERN projects and WordPress websites. Developed responsive client-facing applications with UX focus.",
-      icon: Briefcase,
-      type: "experience"
-    },
-    {
-      year: "Apr 2021 - Mar 2022",
-      title: "Intermediate Education",
-      institution: "The Woods Heritage School",
-      location: "Jhansi, Uttar Pradesh",
-      description: "Completed intermediate education with 78% aggregate. Foundation for technical pursuits.",
+      description: "Pursuing degree in Computer Science Engineering with focus on full-stack development and AI.",
       icon: BookOpen,
       type: "education"
     },
     {
-      year: "Apr 2019 - Mar 2020",
-      title: "Secondary Education",
-      institution: "The Woods Heritage School",
-      location: "Jhansi, Uttar Pradesh",
-      description: "Completed matriculation with 82% aggregate. Developed strong academic fundamentals.",
+      year: "2023 - Present",
+      title: "Full Stack Developer",
+      institution: "Independent Projects",
+      description: "Building production-grade applications with React, Node.js, Python, and modern cloud services.",
       icon: Code,
+      type: "experience"
+    },
+    {
+      year: "2024",
+      title: "AI & Generative Tools Master",
+      institution: "Udemy Certification",
+      description: "Completed comprehensive course on Generative AI, LLMs, and modern AI applications.",
+      icon: BookOpen,
       type: "education"
+    },
+    {
+      year: "2024",
+      title: "GFG x LPU Innovathon Winner",
+      institution: "GeeksforGeeks",
+      description: "Won 1st position in innovation competition with cutting-edge solution for real-world problem.",
+      icon: Briefcase,
+      type: "achievement"
     }
   ]
 
+  const skills = {
+    "Frontend": ["React", "Next.js", "Tailwind CSS", "GSAP", "Framer Motion"],
+    "Backend": ["Node.js", "Python", "Express", "MongoDB", "PostgreSQL"],
+    "Tools": ["Git", "Docker", "Figma", "VS Code", "Vercel"]
+  }
+
   return (
-    <section id="journey" ref={sectionRef} className="py-20 px-4 md:px-8 bg-white">
-      <div className="max-w-4xl mx-auto">
-        {/* Section Header */}
+    <section id="journey" ref={sectionRef} className="py-20 px-4 md:px-8 bg-neutral-50">
+      <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="section-header">My Journey</h2>
           <p className="text-primary-700 text-lg max-w-2xl text-pretty">
-            An educational and professional trajectory shaped by curiosity, continuous learning, 
-            and practical application of technology across diverse domains.
+            Educational background, professional milestones, and continuous growth in technology.
           </p>
         </div>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="hidden md:block absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent-500 via-accent-300 to-accent-100 timeline-line" />
+        <div className="relative mb-20">
+          <div className="timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-accent-400 to-accent-200 rounded-full"></div>
 
-          {/* Timeline Items */}
           <div className="space-y-12">
-            {journeyItems.map((item, index) => {
+            {journeyItems.map((item, idx) => {
               const Icon = item.icon
+              const isEven = idx % 2 === 0
+              
               return (
                 <div
-                  key={index}
-                  ref={el => timelineRef.current[index] = el}
-                  className="md:flex md:gap-16"
+                  key={idx}
+                  ref={el => timelineRef.current[idx] = el}
+                  className={`relative flex ${isEven ? 'flex-row' : 'flex-row-reverse'} items-center gap-8`}
                 >
-                  {/* Timeline Dot - Desktop */}
-                  <div className="hidden md:flex md:w-16 md:justify-end md:flex-shrink-0">
-                    <div className="relative z-10">
-                      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-6">
-                        <div className="w-8 h-8 bg-white border-3 border-accent-500 rounded-full flex items-center justify-center shadow-subtle-lg">
-                          <div className="w-3 h-3 bg-accent-500 rounded-full" />
-                        </div>
-                      </div>
-                    </div>
+                  {/* Timeline dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-accent-500 rounded-full flex items-center justify-center z-10">
+                    <Icon className="text-accent-500" size={20} />
                   </div>
 
                   {/* Content */}
-                  <div className="md:flex-1">
-                    <div className="p-6 bg-neutral-50 border border-neutral-200 rounded-xl hover:border-accent-300 hover:shadow-subtle transition-all duration-300 group">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className={`p-3 rounded-lg flex-shrink-0 ${
-                          item.type === 'education' 
-                            ? 'bg-accent-50 text-accent-500' 
-                            : 'bg-primary-50 text-primary-600'
-                        }`}>
-                          <Icon size={20} />
-                        </div>
-                        <div className="flex-1">
-                          <div className="text-xs font-semibold text-accent-500 uppercase tracking-wide mb-1">
-                            {item.year}
-                          </div>
-                          <h3 className="text-xl font-bold text-primary-900 mb-1">
-                            {item.title}
-                          </h3>
-                          <p className="text-primary-600 font-semibold mb-2">
-                            {item.institution}
-                          </p>
-                          <p className="text-sm text-primary-500 mb-3">
-                            📍 {item.location}
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-primary-700 leading-relaxed">
-                        {item.description}
-                      </p>
+                  <div className={`w-1/2 ${isEven ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                    <div className="p-6 bg-white border border-neutral-200 rounded-xl hover:shadow-subtle-lg transition-all duration-300">
+                      <div className="text-accent-600 text-sm font-semibold mb-2">{item.year}</div>
+                      <h3 className="text-lg font-bold text-primary-900 mb-1">{item.title}</h3>
+                      <p className="text-primary-600 text-sm mb-3">{item.institution}</p>
+                      <p className="text-primary-700 text-sm">{item.description}</p>
                     </div>
                   </div>
                 </div>
@@ -156,43 +126,26 @@ const Journey = () => {
           </div>
         </div>
 
-        {/* Skills Overview */}
-        <div className="mt-16 pt-16 border-t border-neutral-200">
-          <h3 className="text-2xl font-bold text-primary-900 mb-8">Technical Skills & Tools</h3>
+        {/* Skills Section */}
+        <div className="mt-20 pt-16 border-t border-neutral-200">
+          <h3 className="text-2xl font-bold text-primary-900 mb-12">Skills & Technologies</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="font-semibold text-primary-900 mb-4">Languages & Frameworks</h4>
-              <div className="flex flex-wrap gap-2">
-                {['JavaScript', 'Python', 'Java', 'C++', 'React', 'Node.js', 'Express.js', 'Spring Boot', 'PHP'].map(skill => (
-                  <span key={skill} className="px-4 py-2 bg-accent-50 text-accent-700 rounded-full text-sm font-medium">
-                    {skill}
-                  </span>
-                ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {Object.entries(skills).map(([category, skillList]) => (
+              <div key={category} className="p-6 bg-white border border-neutral-200 rounded-xl">
+                <h4 className="font-bold text-primary-900 mb-4">{category}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {skillList.map(skill => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-accent-50 text-accent-700 text-sm font-semibold rounded-full"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-primary-900 mb-4">Databases & Tools</h4>
-              <div className="flex flex-wrap gap-2">
-                {['MySQL', 'MongoDB', 'SQLite', 'Git', 'Docker', 'XAMPP', 'Figma', 'Firebase'].map(skill => (
-                  <span key={skill} className="px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-medium">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <h4 className="font-semibold text-primary-900 mb-4">Soft Skills</h4>
-            <div className="flex flex-wrap gap-2">
-              {['Resilience', 'Analytical Thinking', 'Problem Solving', 'Detail Oriented', 'Leadership', 'Communication'].map(skill => (
-                <span key={skill} className="px-4 py-2 bg-accent-50 text-accent-700 rounded-full text-sm font-medium">
-                  {skill}
-                </span>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>

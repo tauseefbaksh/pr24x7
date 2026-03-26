@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
-
-gsap.registerPlugin(ScrollTrigger)
+import { Github, Linkedin, Mail } from 'lucide-react'
 
 const PortfolioHero = () => {
   const titleRef = useRef(null)
@@ -13,7 +10,6 @@ const PortfolioHero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Staggered animations on mount
       gsap.from([titleRef.current, subtitleRef.current, descRef.current, ctaRef.current], {
         duration: 1,
         opacity: 0,
@@ -75,7 +71,7 @@ const PortfolioHero = () => {
             ref={descRef}
             className="text-lg md:text-xl text-primary-700 max-w-2xl mb-8 leading-relaxed text-pretty"
           >
-            I craft scalable, high-performance solutions leveraging modern technologies like React, Node.js, and Python. From AI-powered bots to secure file managers, I turn complex challenges into elegant code. Currently pursuing CSE at LPU, constantly learning and building innovative projects.
+            I craft scalable, high-performance solutions leveraging modern technologies like React, Node.js, and Python. From AI-powered bots to secure file managers, I turn complex challenges into elegant code.
           </p>
 
           {/* CTA Buttons */}
