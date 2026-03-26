@@ -7,34 +7,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Corporate Navy - Primary Brand Color
+        // Minimalist Dark Navy - Primary
         primary: {
-          50: '#e6edf5',
-          100: '#ccdaeb',
-          200: '#99b5d7',
-          300: '#6690c3',
-          400: '#336baf',
-          500: '#00469b',
-          600: '#003a7c',
-          700: '#002d5d',
-          800: '#001f3e',
-          900: '#001a4d',  // Main corporate navy
-          950: '#00101f',
+          50: '#f0f4f9',
+          100: '#e0e9f3',
+          200: '#c1d3e7',
+          300: '#8bb1d9',
+          400: '#5589cb',
+          500: '#1e3a5f',  // Main navy
+          600: '#1a2d4a',
+          700: '#162438',
+          800: '#121c2e',
+          900: '#0f1620',
+          950: '#0a0f18',
         },
-        // Accent Orange - Call-to-action Color
+        // Soft Accent - Teal/Cyan
         accent: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',  // Main orange
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
+          50: '#f0f9fb',
+          100: '#dff3f7',
+          200: '#bce8f0',
+          300: '#7fd4e8',
+          400: '#40bfd4',
+          500: '#06b6d4',  // Main teal
+          600: '#0891b2',
+          700: '#0e7490',
+          800: '#155e75',
+          900: '#164e63',
         },
-        // Neutral Grays
+        // Neutral Grays for clean aesthetic
         neutral: {
           50: '#fafafa',
           100: '#f5f5f5',
@@ -53,9 +53,9 @@ export default {
         display: ['Poppins', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'corporate': '0 4px 6px -1px rgba(0, 26, 77, 0.1), 0 2px 4px -1px rgba(0, 26, 77, 0.06)',
-        'corporate-lg': '0 10px 15px -3px rgba(0, 26, 77, 0.1), 0 4px 6px -2px rgba(0, 26, 77, 0.05)',
-        'corporate-xl': '0 20px 25px -5px rgba(0, 26, 77, 0.1), 0 10px 10px -5px rgba(0, 26, 77, 0.04)',
+        'subtle': '0 2px 8px rgba(30, 58, 95, 0.05)',
+        'subtle-lg': '0 10px 24px rgba(30, 58, 95, 0.08)',
+        'subtle-xl': '0 20px 40px rgba(30, 58, 95, 0.1)',
       }
     },
   },
